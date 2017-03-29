@@ -13,16 +13,15 @@ var stackMethods = {};
 
 
 stackMethods.push = function(val) {
-    this.storage[this.size()] = val;
-}
+  this.storage[this.size()] = val;
+};
 
 stackMethods.pop = function() {
-    var holder = this.storage[this.size() - 1];
-    delete this.storage[this.size() - 1];
-
-    return holder;
-}
+  var holder = this.storage[this.size() - 1];
+  delete this.storage[this.size() - 1];
+  return holder;
+};
 
 stackMethods.size = function() {
-    return _.keys(this.storage).length;
-}
+  return _.keys(this.storage).length;
+};
