@@ -23,6 +23,7 @@ describe('linkedList', function() {
     expect(linkedList.tail.value).to.equal(5);
   });
 
+
   it('should remove the head from the list when removeHead is called', function() {
     linkedList.addToTail(4);
     linkedList.addToTail(5);
@@ -51,5 +52,17 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
+
   // add more tests here to test the functionality of linkedList
+
+
+  it('should add properties to the list as they are added', function() {
+    linkedList.addToTail(4);
+    expect(linkedList[4]).to.equal(null);
+    linkedList.addToTail(5);
+    expect(linkedList[4]).to.equal(5);
+    expect(linkedList[5]).to.equal(null);
+  });
+
+
 });
