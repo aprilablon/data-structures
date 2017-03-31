@@ -31,7 +31,8 @@ treeMethods.contains = function(target) {
       }
     }
     return false;
-  }
+  };
+  
   return findTarget(this);
 };
 
