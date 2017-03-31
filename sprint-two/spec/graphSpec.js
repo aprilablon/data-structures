@@ -68,4 +68,35 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+
+  //added tests
+  it('should add edge both to and from nodes', function() {
+    graph.addNode(4);
+    graph.addNode(5);
+    graph.addEdge(4,5);
+    expect(graph.hasEdge(5,4)).to.equal(true);
+    expect(graph.hasEdge(4,5)).to.equal(true);
+  });
+
+  it('should handle various data types', function() {
+    var obj = {'b': 2};
+    var arr = ['a'];
+    graph.addNode('hello');
+    graph.addNode(arr);
+    graph.addNode(obj);
+    graph.addEdge(obj, arr);
+    expect(graph.hasEdge(obj, arr)).to.equal(true);
+    expect(graph.contains(arr)).to.equal(true);
+    expect(graph.contains(obj)).to.equal(true);
+    expect(graph.contains('hello')).to.equal(true);
+  });
+
 });
+
+
+
+
+
+
+
+
