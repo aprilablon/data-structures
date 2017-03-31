@@ -7,11 +7,11 @@ var LinkedList = function() {
     var node = Node(value);
 
     if (list.tail === null) {
-        list.tail = node;
-        list.head = node;
+      list.tail = node;
+      list.head = node;
     } else {
-        list.tail.next = node; // list.tail.value = 4
-        list.tail = node // list.tail = {value: 5, next: null}
+      list.tail.next = node; // list.tail.value = 4
+      list.tail = node; // list.tail = {value: 5, next: null}
     }
   };
 
@@ -28,21 +28,16 @@ var LinkedList = function() {
       list.head = list.head.next;
       return holder;
     }
-    // if head.next is null
-      // head updates to null
-      // tail updates to null
-    // else
-      // head updates to head.next
   };
 
   list.contains = function(target) {
 
-    function findTarget(list) {
+    var findTarget = function(list) {
       if (list.value === target) {
         return true;
       }
       if (list.next === null) {
-        return false
+        return false;
       } else {
         return findTarget(list.next);
       }
