@@ -24,4 +24,11 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  it('should not contain a value that hasn\'t been added to the set', function() {
+    set.add(1);
+    expect(set.contains(2)).to.equal(false);
+    expect(set.contains('hi')).to.equal(false);
+  });
+
+
 });
