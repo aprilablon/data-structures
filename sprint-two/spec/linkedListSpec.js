@@ -54,15 +54,45 @@ describe('linkedList', function() {
 
 
   // add more tests here to test the functionality of linkedList
-
-
-  it('should add properties to the list as they are added', function() {
+  it('should only ever have 5 properties, including function methods', function() {
     linkedList.addToTail(4);
-    expect(linkedList[4]).to.equal(null);
-    linkedList.addToTail(5);
-    expect(linkedList[4]).to.equal(5);
-    expect(linkedList[5]).to.equal(null);
+    expect(_.keys(linkedList).length).to.equal(5);
   });
+
+  it('should hold arrays and objects and primitives', function() {
+    var arr = [];
+    var obj = {};
+    linkedList.addToTail(obj);
+    linkedList.addToTail(arr);
+    expect(linkedList.contains(arr)).to.equal(true);
+    expect(linkedList.contains(obj)).to.equal(true);
+  });
+
+  it('should have the same node reference when a single item is added to the list', function() {
+    linkedList.addToTail(4);
+    expect(linkedList.head === linkedList.tail).to.equal(true);
+  });
+
+  it('should reference next node as object not value', function() {
+    linkedList.addToTail(':)');
+    linkedList.addToTail(':(');
+    expect(typeof linkedList.head.next).to.equal('object');
+  });
+
+  it('should reset head and tail values to null if list is emptied', function() {
+    linkedList.addToTail(4);
+    linkedList.removeHead();
+    expect(linkedList.head).to.equal(null);
+    expect(linkedList.tail).to.equal(null);
+  })
+
+
 
 
 });
+
+
+
+
+
+
