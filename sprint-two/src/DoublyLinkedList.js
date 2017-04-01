@@ -1,4 +1,4 @@
-var LinkedList = function() {
+var DoublyLinkedList = function() {
   var list = {};
   list.head = null;
   list.tail = null;
@@ -10,8 +10,11 @@ var LinkedList = function() {
       list.tail = node;
       list.head = node;
     } else {
+      var holder = list.tail;
+
       list.tail.next = node; // list.tail.value = 4
       list.tail = node; // list.tail = {value: 5, next: null}
+      list.tail.prev = holder;
     }
   };
 
@@ -26,6 +29,7 @@ var LinkedList = function() {
     } else {
       var holder = list.head.value;
       list.head = list.head.next;
+      list.head.prev = null;
       return holder;
     }
   };
@@ -54,6 +58,18 @@ var Node = function(value) {
 
   node.value = value;
   node.next = null;
+  node.prev = null;
 
   return node;
 };
+
+
+
+
+
+
+
+
+
+
+
