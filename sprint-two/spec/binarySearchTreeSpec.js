@@ -2,7 +2,8 @@ describe('binarySearchTree', function() {
   var binarySearchTree;
 
   beforeEach(function() {
-    binarySearchTree = BinarySearchTree(5);
+    binarySearchTree = new BinarySearchTree(5);
+    
   });
 
   it('should have methods named "insert", "contains", and "depthFirstLog', function() {
@@ -36,4 +37,13 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3]);
   });
+
+  //new tests
+  it('should handle strings as input', function() {
+    alphabetTree = new BinarySearchTree('c');
+    alphabetTree.insert('hello');
+    alphabetTree.insert('goobye');
+    expect(alphabetTree.contains('hello')).to.equal(true);
+  });
+  
 });
