@@ -42,7 +42,28 @@ treeMethods.traverse = function(cb) {
       this.children[i].traverse(cb);
     }
   }
+};
 
+treeMethods.parentRemove = function(target) {
+
+  var findTargetNode = function(tree) {
+    if (tree.value === target) {
+      return tree;
+    } else if (tree.children.length > 0) {
+      for (var i = 0; i < tree.children.length; i++) {
+        return findTargetNode(tree.children[i]);
+      }
+    }
+    return false;
+  };
+
+  var targetNode = findTargetNode(this);
+  var targetNodeParent = targetNode.parent;
+  
+  targetNode.parent = null;
+  targetNodeParent.children = targetNodeParent.children.filter(function(child) {
+    return child !== targetNode;
+  });
 };
 
 
