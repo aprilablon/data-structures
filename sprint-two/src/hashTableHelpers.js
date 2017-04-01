@@ -13,6 +13,7 @@
 
 var LimitedArray = function(limit) {
   var storage = [];
+  var contentCount = 0;
 
   var limitedArray = {};
   limitedArray.get = function(index) {
@@ -28,9 +29,29 @@ var LimitedArray = function(limit) {
       callback(storage[i], i, storage);
     }
   };
-  limitedArray.resize = function() {
+  limitedArray.verifySize = function() {
+    if ( contentCount < (.25 * limit) ) {
+      return limit / 2;
     
-  }
+    } else if (contentCount > (.75 * limit) ) {
+      return limit * 2;
+    } else {
+      return false;
+    }
+
+  };
+
+  limitedArray.decrement = function() {
+    console.log('decreasing content count: ' + contentCount);
+    contentCount--;
+  };
+  limitedArray.increment = function() {
+    console.log('increasing content count: ' + contentCount);
+    contentCount++;
+  };
+  limitedArray.collect = function() {
+    // return all key-value pairs
+  };
 
   var checkLimit = function(index) {
     if (typeof index !== 'number') {
