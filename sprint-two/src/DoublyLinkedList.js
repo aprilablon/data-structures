@@ -12,8 +12,8 @@ var DoublyLinkedList = function() {
     } else {
       var holder = list.tail;
 
-      list.tail.next = node; // list.tail.value = 4
-      list.tail = node; // list.tail = {value: 5, next: null}
+      list.tail.next = node;
+      list.tail = node;
       list.tail.prev = holder;
     }
   };
