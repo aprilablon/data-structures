@@ -28,6 +28,9 @@ var LimitedArray = function(limit) {
       callback(storage[i], i, storage);
     }
   };
+  limitedArray.resize = function() {
+    
+  }
 
   var checkLimit = function(index) {
     if (typeof index !== 'number') {
