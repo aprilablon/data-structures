@@ -51,5 +51,16 @@ describe('tree', function() {
     expect(tree.contains(arr)).to.equal(true);
     expect(tree.contains(obj)).to.equal(true);
     expect(tree.contains('hello')).to.equal(true);
-  })
+  });
+  //tests for advanced features
+  it('should properly assign parent values to added nodes', function() {
+  	expect(tree.parent).to.equal(null);
+  	tree.addChild(5);
+  	expect(tree.children[0].parent.value).to.equal(undefined);
+  	expect(typeof tree.children[0].parent).to.equal('object');
+  	tree.children[0].addChild(4);
+  	expect(tree.children[0].children[0].parent.value).to.equal(5);
+  });
+
+
 });
