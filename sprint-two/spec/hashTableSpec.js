@@ -73,4 +73,15 @@ describe('hashTable', function() {
     hashTable.remove('Mr.');
     expect(hashTable._limit).to.equal(8);
   });
+
+
+  //added tests
+  it('should have buckets and key value pairs stored as arrays', function() {
+    hashTable.insert('a', 'a');
+    hashTable.insert('b', 'b');
+    expect(Array.isArray(hashTable._storage.get(1))).to.equal(true);
+    expect(Array.isArray(hashTable._storage.get(1)[0])).to.equal(true);
+  });
+
+  
 });
