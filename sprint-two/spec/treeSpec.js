@@ -42,5 +42,14 @@ describe('tree', function() {
   });
 
   //new tests
-
+  it('should handle non-numeric values', function() {
+    var obj = {};
+    var arr = [];
+    tree.addChild(arr);
+    tree.addChild(obj);
+    tree.addChild('hello');
+    expect(tree.contains(arr)).to.equal(true);
+    expect(tree.contains(obj)).to.equal(true);
+    expect(tree.contains('hello')).to.equal(true);
+  })
 });
