@@ -30,5 +30,15 @@ describe('set', function() {
     expect(set.contains('hi')).to.equal(false);
   });
 
+  //added tests
+  it('should add arrays or objects to set', function() {
+    var arr = [];
+    var obj = {};
+    set.add(arr);
+    set.add(obj);
+    expect(set.contains(obj)).to.equal(true);
+    expect(set.contains(arr)).to.equal(true);
+  });
+
 
 });
