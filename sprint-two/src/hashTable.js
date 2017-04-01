@@ -29,7 +29,6 @@ HashTable.prototype.retrieve = function(k) {
   var bucket = this._storage.get(index);
 
   if (bucket) {
-    console.log(bucket);
     if (bucket[0][0] === k) {
       return bucket[0][1];
     } else {
@@ -54,4 +53,7 @@ HashTable.prototype.remove = function(k) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ insert: constant
+ retrieve: for the current solution, constant. However, if we were to turn the buckets into a linked list, retrieve would be linear
+ remove: same answer as retrieve
  */
