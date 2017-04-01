@@ -74,7 +74,17 @@ describe('tree', function() {
     expect(array).to.eql([undefined, 2, 7, 8, 3, 9]);
   });
 
-
+  it('should remove parent from target node, and remove target node from parent\'s child list', function() {
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.children[0].addChild(7);
+    tree.children[1].addChild(8);
+    tree.parentRemove(7)
+    var children = tree.children[0].children.map(function(child) {
+      return child.value;
+    });
+    expect(children.includes(7)).to.equal(false);
+  });
 });
 
 
