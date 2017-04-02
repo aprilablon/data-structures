@@ -41,11 +41,9 @@ var LimitedArray = function(limit) {
 
   };
   limitedArray.decrement = function() {
-    console.log('decreasing content count: ' + contentCount);
     contentCount--;
   };
   limitedArray.increment = function() {
-    console.log('increasing content count: ' + contentCount);
     contentCount++;
   };
   limitedArray.collect = function() {
@@ -54,14 +52,13 @@ var LimitedArray = function(limit) {
     var collection = [];
     //for each in storage
     storage.forEach(function(bucket) {
-      bucket.forEach(function(tuple) {
-        collection.push(tuple);
-      });
+      if (bucket !== undefined) {
+        bucket.forEach(function(tuple) {
+          collection.push(tuple);
+        });  
+      }
     });
     return collection;
-      //for each in bucket
-        //push to holder
-    //return hodler
   };
 
   var checkLimit = function(index) {
