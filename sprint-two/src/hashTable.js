@@ -11,10 +11,11 @@ HashTable.prototype.resize = function(size, collection) {
   this._storage = LimitedArray(size);
   
 
-  collection.forEach(function(tuple) {
-    console.log(tuple);
-    HashTable.prototype.insert(tuple[0], tuple[1]);
-  });
+  for (var i = 0; i < collection.length; i++) {
+    console.log(collection[i]);
+    console.log(this);
+    this.insert(collection[i][0], collection[i][1]);
+  }
 
 }
 
@@ -45,11 +46,7 @@ HashTable.prototype.insert = function(k, v) {
   this._storage.increment();
   var shouldResize = this._storage.verifySize();
   
-  if (shouldResize > 4) {
-    console.log('need to inc');
-    console.log(shouldResize);
-
-
+  if (shouldResize > 8) {
 
     // collecting everything in storage
     //need to somehow insert to new this._storage
@@ -85,14 +82,10 @@ HashTable.prototype.remove = function(k) {
   var shouldResize = this._storage.verifySize();
 
   if (shouldResize) {
-    console.log('need to dec');
-    console.log(shouldResize);
-
-
     // collecting everything in storage
     //need to somehow insert to new this._storage
     var collection = this._storage.collect();
-    resize(shouldResize, collection);
+    this.resize(shouldResize, collection);
   }
 
 };
