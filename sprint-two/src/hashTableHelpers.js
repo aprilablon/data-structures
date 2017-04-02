@@ -40,7 +40,6 @@ var LimitedArray = function(limit) {
     }
 
   };
-
   limitedArray.decrement = function() {
     console.log('decreasing content count: ' + contentCount);
     contentCount--;
@@ -51,6 +50,18 @@ var LimitedArray = function(limit) {
   };
   limitedArray.collect = function() {
     // return all key-value pairs
+    //set up holder for pairs
+    var collection = [];
+    //for each in storage
+    storage.forEach(function(bucket) {
+      bucket.forEach(function(tuple) {
+        collection.push(tuple);
+      });
+    });
+    return collection;
+      //for each in bucket
+        //push to holder
+    //return hodler
   };
 
   var checkLimit = function(index) {
